@@ -1,8 +1,5 @@
 name = "renoxf"
 compatibility_date = "2026-08-30"
 
-# Static site via Workers Assets (2026)
-assets = { directory = "./", not_found_handling = "single-page-application" }
-
-# Optional: custom domain via Cloudflare (sudah di-handle DNS)
-# routes = [{ pattern = "me.iamraf.my.id/*", zone_name = "iamraf.my.id" }]
+# Static site via Workers Assets - hanya folder public biar node_modules gak keikut (limit 25MiB)
+assets = { directory = "./public", not_found_handling = "single-page-application" }
