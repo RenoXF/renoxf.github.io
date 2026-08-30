@@ -4,203 +4,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>♡♡♡ Hi 👋, I'm RAF ♡♡♡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            font-family:'Quicksand',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+            background:linear-gradient(135deg,#fefce8 0%,#fff1f2 35%,#fdf2f8 65%,#fefce8 100%);
+            min-height:100vh;overflow-x:hidden;position:relative;color:#374151;
         }
+        /* pastel blobs */
+        .blobs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+        .blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.5;animation:blobFloat 8s ease-in-out infinite}
+        .blob1{width:380px;height:380px;background:#fbcfe8;top:-80px;left:-60px;animation-delay:0s}
+        .blob2{width:420px;height:420px;background:#fef08a;top:20%;right:-100px;animation-delay:2s}
+        .blob3{width:500px;height:500px;background:#f9a8d4;bottom:-120px;left:30%;animation-delay:4s}
+        @keyframes blobFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-20px) scale(1.05)}}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #fefce8 0%, #f9fafb 50%, #fefce8 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+        .love-rain{position:fixed;inset:0;pointer-events:none;z-index:1}
+        .heart{position:absolute;top:-40px;font-size:22px;color:#ec4899;opacity:.9;animation-name:fall;animation-timing-function:linear;animation-iteration-count:infinite;will-change:transform}
+        .heart.tiny{font-size:14px;color:#f472b6;opacity:.6}
+        .heart.sparkle{color:#facc15}
+
+        .container{position:relative;z-index:10;max-width:880px;margin:0 auto;padding:64px 20px 44px;text-align:center}
+        .character-container{margin-bottom:20px;animation:enterUp .8s ease both}
+        .kawaii-character{width:220px;height:220px;margin:0 auto 20px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 10px 18px rgba(236,72,153,.18))}
+        /* eye blink */
+        .eye{animation:blink 4s ease-in-out infinite;transform-origin:center}
+        .blush{animation:blushPulse 2.2s ease-in-out infinite}
+        .ear{animation:earWiggle 3.5s ease-in-out infinite;transform-origin:bottom center}
+        .ear2{animation:earWiggle 3.5s ease-in-out infinite reverse;transform-origin:bottom center}
+        .heart-hold{animation:heartBeat 1.6s ease-in-out infinite;transform-origin:center}
+        @keyframes blink{0%,96%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}} 
+        @keyframes blushPulse{0%,100%{opacity:.55}50%{opacity:.85}}
+        @keyframes earWiggle{0%,100%{transform:rotate(0)}50%{transform:rotate(4deg)}}
+        @keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+
+        .title{font-family:'Baloo 2',cursive;font-size:40px;font-weight:700;margin-bottom:10px;color:#374151;line-height:1.2;min-height:50px}
+        .title .pink{color:#ec4899}
+        .cursor{color:#ec4899;animation:cursorBlink .9s step-end infinite}
+        @keyframes cursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
+        .subtitle{font-size:17px;color:#6b7280;margin-bottom:28px;letter-spacing:.12em;animation:enterUp .8s .15s both}
+        .type-sub{font-size:16px;color:#ec4899;margin-bottom:30px;height:24px;font-weight:700}
+
+        .social-card{
+            background:rgba(255,255,255,.78);backdrop-filter:blur(12px);
+            border:2px solid rgba(255,255,255,.9);border-radius:22px;padding:28px;
+            margin-bottom:40px;box-shadow:0 10px 30px rgba(236,72,153,.12),0 2px 0 rgba(255,255,255,.8) inset;
+            animation:enterUp .8s .3s both;position:relative;overflow:hidden;
         }
-
-        .love-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+        .social-card::before{content:'';position:absolute;top:-2px;left:-2px;right:-2px;height:6px;background:linear-gradient(90deg,#f472b6,#facc15,#fb7185,#f472b6);background-size:200% 100%;animation:rainbowMove 4s linear infinite;border-radius:20px 20px 0 0}
+        @keyframes rainbowMove{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+        .social-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+        .social-btn{
+            padding:13px 26px;border:none;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;
+            transition:transform .2s ease,box-shadow .2s ease; text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+            position:relative;overflow:hidden;transform:translateY(0);
+            animation:enterUp .6s both;
         }
+        .social-btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transition:left .5s}
+        .social-btn:hover::after{left:100%}
+        .social-btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 8px 18px rgba(0,0,0,.14)}
+        .social-btn:active{transform:scale(.97)}
+        .whatsapp{background:#25d366;color:#fff;animation-delay:.35s}
+        .github{background:#374151;color:#fff;animation-delay:.45s}
+        .facebook{background:#3b82f6;color:#fff;animation-delay:.55s}
+        .instagram{background:linear-gradient(135deg,#f472b6,#ec4899,#8b5cf6);color:#fff;animation-delay:.65s}
+        .about{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;animation-delay:.75s}
 
-        .heart {
-            position: absolute;
-            font-size: 24px;
-            color: #ec4899;
-            opacity: 1;
-            animation: fall linear infinite;
-        }
+        .footer-text{color:#ec4899;font-size:20px;margin-bottom:16px;letter-spacing:.2em;animation:enterUp .8s .8s both;display:flex;justify-content:center;gap:10px}
+        .footer-text span{display:inline-block;animation:floatY 2s ease-in-out infinite}
+        .footer-text span:nth-child(1){animation-delay:0s} .footer-text span:nth-child(2){animation-delay:.15s} .footer-text span:nth-child(3){animation-delay:.3s} .footer-text span:nth-child(4){animation-delay:.45s} .footer-text span:nth-child(5){animation-delay:.6s} .footer-text span:nth-child(6){animation-delay:.75s}
+        .emoji-row{display:flex;justify-content:center;gap:14px;font-size:32px;flex-wrap:wrap;max-width:600px;margin:0 auto}
+        .emoji{animation:floatY 2.4s ease-in-out infinite;display:inline-block;filter:drop-shadow(0 4px 6px rgba(0,0,0,.08));transition:transform .2s}
+        .emoji:nth-child(1){animation-delay:0s} .emoji:nth-child(2){animation-delay:.12s} .emoji:nth-child(3){animation-delay:.24s} .emoji:nth-child(4){animation-delay:.36s} .emoji:nth-child(5){animation-delay:.48s} .emoji:nth-child(6){animation-delay:.6s} .emoji:nth-child(7){animation-delay:.72s} .emoji:nth-child(8){animation-delay:.84s}
+        .emoji:hover{animation:wobble .6s ease;transform:scale(1.2)}
 
-        .container {
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 64px 16px;
-            text-align: center;
-        }
+        .badge{display:inline-block;background:#fff;border:1.5px dashed #f9a8d4;color:#ec4899;padding:7px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.08em;margin-bottom:16px;animation:enterUp .8s .05s both;box-shadow:0 4px 10px rgba(236,72,153,.08)}
+        .orbit{position:absolute;font-size:14px;animation:orbit 4s linear infinite;pointer-events:none}
+        .char-wrap{position:relative;display:inline-block}
 
-        .character-container {
-            margin-bottom: 32px;
-        }
+        /* trail heart */
+        .trail{position:fixed;pointer-events:none;font-size:18px;color:#ec4899;z-index:9999;animation:trailFade .9s ease forwards}
+        @keyframes trailFade{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-80px) scale(.6) rotate(20deg)}}
+        /* confetti */
+        .confetti{position:fixed;pointer-events:none;font-size:16px;z-index:9999;animation:confettiFly .8s ease-out forwards}
+        @keyframes confettiFly{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) rotate(720deg) scale(0)}}
 
-        .kawaii-character {
-            width: 192px;
-            height: 192px;
-            margin: 0 auto 24px;
-            animation: float 3s ease-in-out infinite;
-        }
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+        @keyframes fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+        @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
+        @keyframes wobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg) scale(1.1)}75%{transform:rotate(8deg) scale(1.1)}}
+        @keyframes enterUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes orbit{from{transform:rotate(0deg) translateX(110px) rotate(0deg)}to{transform:rotate(360deg) translateX(110px) rotate(-360deg)}}
 
-        .title {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 16px;
-            color: #374151;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #6b7280;
-            margin-bottom: 32px;
-        }
-
-        .social-card {
-            background: rgba(249, 250, 251, 0.8);
-            backdrop-filter: blur(8px);
-            border: 2px solid rgba(229, 231, 235, 0.2);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 48px;
-        }
-
-        .social-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .social-btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: bounce 2s infinite;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .whatsapp { background: #25d366; color: white; animation-delay: 0.1s; }
-        .github { background: #6b7280; color: white; animation-delay: 0.2s; }
-        .facebook { background: #3b82f6; color: white; animation-delay: 0.3s; }
-        .instagram { background: #ec4899; color: white; animation-delay: 0.4s; }
-        .about { background: #d97706; color: white; animation-delay: 0.5s; }
-
-        .footer-text {
-            color: #ec4899;
-            font-size: 20px;
-            margin-bottom: 16px;
-        }
-
-        .emoji-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            font-size: 32px;
-        }
-
-        .emoji {
-            animation: bounce 2s infinite;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .title { font-size: 28px; }
-            .social-buttons { flex-direction: column; align-items: center; }
-            .social-btn { width: 200px; }
-        }
+        @media(min-width:1080px){.container{max-width:900px}.kawaii-character{width:225px;height:225px}.title{font-size:42px}}
+        @media(max-width:640px){.title{font-size:30px}.social-buttons{flex-direction:column;align-items:center}.social-btn{width:240px;justify-content:center}.kawaii-character{width:200px;height:200px}.emoji-row{font-size:28px}}
+        @media(prefers-reduced-motion:reduce){.blobs,.kawaii-character,.eye,.blush,.emoji,.blob,.social-btn,.badge,.orbit,.cursor{animation:none!important}.trail,.confetti{display:none} /* keep heart rain visible but slower for a11y */}
+        @media(prefers-reduced-motion:reduce){.heart{animation-duration:12s!important}}
     </style>
 </head>
 <body>
+    <div class="blobs"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
     <div class="love-rain" id="loveRain"></div>
 
     <div class="container">
+        <div class="badge">✨ kawaii • bubbly • raf world ✨</div>
         <div class="character-container">
-            <div class="kawaii-character">
-                <svg viewBox="0 0 200 200" width="100%" height="100%">
-                    <!-- Main body -->
-                    <ellipse cx="100" cy="120" rx="70" ry="60" fill="#fefce8" stroke="#374151" stroke-width="3" />
-                    
-                    <!-- Head -->
-                    <ellipse cx="100" cy="70" rx="50" ry="45" fill="#fefce8" stroke="#374151" stroke-width="3" />
-                    
-                    <!-- Eyes -->
-                    <circle cx="85" cy="65" r="8" fill="#374151" />
-                    <circle cx="115" cy="65" r="8" fill="#374151" />
-                    <circle cx="87" cy="63" r="2" fill="white" />
-                    <circle cx="117" cy="63" r="2" fill="white" />
-                    
-                    <!-- Blush -->
-                    <ellipse cx="65" cy="75" rx="8" ry="6" fill="#ec4899" opacity="0.6" />
-                    <ellipse cx="135" cy="75" rx="8" ry="6" fill="#ec4899" opacity="0.6" />
-                    
-                    <!-- Mouth -->
-                    <path d="M 90 80 Q 100 85 110 80" stroke="#374151" stroke-width="2" fill="none" />
-                    
-                    <!-- Arms -->
-                    <ellipse cx="50" cy="110" rx="15" ry="8" fill="#fefce8" stroke="#374151" stroke-width="2" />
-                    <ellipse cx="150" cy="110" rx="15" ry="8" fill="#fefce8" stroke="#374151" stroke-width="2" />
-                    
-                    <!-- Sparkles -->
-                    <text x="40" y="50" font-size="12" fill="#ec4899">✨</text>
-                    <text x="160" y="60" font-size="12" fill="#ec4899">✨</text>
-                    <text x="30" y="140" font-size="12" fill="#ec4899">✨</text>
-                </svg>
+            <div class="char-wrap">
+                <div class="kawaii-character" style="overflow:visible">
+                    <svg viewBox="0 -12 200 214" width="100%" height="100%" style="overflow:visible">
+                        <!-- ears - turun dikit biar gak kepotong -->
+                        <g class="ear"><ellipse cx="72" cy="38" rx="18" ry="34" fill="#fffaf0" stroke="#374151" stroke-width="3"/><ellipse cx="72" cy="40" rx="9" ry="17" fill="#fbcfe8" /></g>
+                        <g class="ear2"><ellipse cx="128" cy="38" rx="18" ry="34" fill="#fffaf0" stroke="#374151" stroke-width="3"/><ellipse cx="128" cy="40" rx="9" ry="17" fill="#fbcfe8" /></g>
+                        <!-- body -->
+                        <ellipse cx="100" cy="128" rx="58" ry="48" fill="#fffaf0" stroke="#374151" stroke-width="3"/>
+                        <!-- paws -->
+                        <ellipse cx="70" cy="135" rx="16" ry="12" fill="#fffaf0" stroke="#374151" stroke-width="2.5"/>
+                        <ellipse cx="130" cy="135" rx="16" ry="12" fill="#fffaf0" stroke="#374151" stroke-width="2.5"/>
+                        <!-- head -->
+                        <ellipse cx="100" cy="74" rx="52" ry="46" fill="#fffaf0" stroke="#374151" stroke-width="3"/>
+                        <!-- cheeks -->
+                        <ellipse class="blush" cx="68" cy="86" rx="11" ry="7" fill="#f9a8d4"/>
+                        <ellipse class="blush" style="animation-delay:.6s" cx="132" cy="86" rx="11" ry="7" fill="#f9a8d4"/>
+                        <!-- eyes super big kawaii -->
+                        <g class="eye"><ellipse cx="84" cy="72" rx="10" ry="12" fill="#374151"/><circle cx="87" cy="68" r="3.5" fill="white"/><circle cx="82" cy="76" r="1.8" fill="#fbcfe8" opacity=".9"/><ellipse cx="84" cy="80" rx="6" ry="2.2" fill="white" opacity=".18"/></g>
+                        <g class="eye" style="animation-delay:.15s"><ellipse cx="116" cy="72" rx="10" ry="12" fill="#374151"/><circle cx="119" cy="68" r="3.5" fill="white"/><circle cx="114" cy="76" r="1.8" fill="#fbcfe8" opacity=".9"/><ellipse cx="116" cy="80" rx="6" ry="2.2" fill="white" opacity=".18"/></g>
+                        <!-- nose & mouth -->
+                        <ellipse cx="100" cy="82" rx="2.2" ry="1.6" fill="#374151"/>
+                        <path d="M 94 88 Q 100 92 106 88" stroke="#374151" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <path d="M 100 84 L 100 88" stroke="#374151" stroke-width="1.4" stroke-linecap="round"/>
+                        <!-- flower hold - ganti hati jadi bunga -->
+                        <g class="heart-hold">
+                            <!-- stem -->
+                            <path d="M 100 142 Q 100 132 100 125" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <!-- 5 petals -->
+                            <ellipse cx="100" cy="114" rx="9" ry="11" fill="#f9a8d4" stroke="#ec4899" stroke-width="1.6"/>
+                            <ellipse cx="89" cy="121" rx="9" ry="11" fill="#f9a8d4" stroke="#ec4899" stroke-width="1.6" transform="rotate(-72 89 121)"/>
+                            <ellipse cx="93" cy="133" rx="9" ry="11" fill="#f9a8d4" stroke="#ec4899" stroke-width="1.6" transform="rotate(-144 93 133)"/>
+                            <ellipse cx="107" cy="133" rx="9" ry="11" fill="#f9a8d4" stroke="#ec4899" stroke-width="1.6" transform="rotate(144 107 133)"/>
+                            <ellipse cx="111" cy="121" rx="9" ry="11" fill="#f9a8d4" stroke="#ec4899" stroke-width="1.6" transform="rotate(72 111 121)"/>
+                            <!-- center -->
+                            <circle cx="100" cy="124" r="7" fill="#fde047" stroke="#f59e0b" stroke-width="1.5"/>
+                            <circle cx="98" cy="122" r="2" fill="white" opacity=".85"/>
+                        </g>
+                        <!-- sparkles - jadi bunga juga -->
+                        <text x="28" y="48" font-size="13">🌸</text><text x="162" y="56" font-size="11">🌼</text><text x="152" y="112" font-size="10">🌷</text>
+                    </svg>
+                </div>
+                <span class="orbit" style="top:10px;left:50%">✨</span>
+                <span class="orbit" style="top:10px;left:50%;animation-delay:-1.3s;animation-duration:3.5s">🌸</span>
+                <span class="orbit" style="top:10px;left:50%;animation-delay:-2.6s;animation-duration:5s">💫</span>
             </div>
         </div>
 
         <div>
-            <h1 class="title">
-                <span style="color: #ec4899;">♡♡♡</span> Hi 👋, I'm RAF <span style="color: #ec4899;">♡♡♡</span>
-            </h1>
-            <p class="subtitle">✨ ✨ ✨ ✨</p>
+            <h1 class="title"><span class="pink">♡♡♡</span> <span id="typeText"></span><span class="cursor" id="cursor">|</span> <span class="pink">♡♡♡</span></h1>
+            <p class="type-sub" id="typeSub"></p>
+            <p class="subtitle">✨ cute • cozy • pastel dream ✨</p>
         </div>
 
         <div class="social-card">
@@ -214,61 +175,94 @@
         </div>
 
         <div>
-            <p class="footer-text">💕 💕 💕 💕</p>
+            <p class="footer-text"><span>💕</span><span>💕</span><span>💕</span><span>💕</span><span>💖</span><span>💕</span></p>
             <div class="emoji-row">
-                <span class="emoji" style="animation-delay: 1s;">🌸</span>
-                <span class="emoji" style="animation-delay: 1.2s;">🦄</span>
-                <span class="emoji" style="animation-delay: 1.4s;">🌈</span>
-                <span class="emoji" style="animation-delay: 1.6s;">✨</span>
+                <span class="emoji">🌸</span><span class="emoji">🦄</span><span class="emoji">🌈</span><span class="emoji">✨</span><span class="emoji">🌷</span><span class="emoji">🎀</span><span class="emoji">🍭</span><span class="emoji">💫</span>
             </div>
+            <p style="margin-top:18px;font-size:12px;color:#9ca3af;letter-spacing:.08em">made with ♡ by RAF • 2026</p>
         </div>
     </div>
 
     <script>
-        // Create falling hearts animation
-        function createLoveRain() {
-            const loveRain = document.getElementById('loveRain');
-            const heartCount = 15;
-
-            for (let i = 0; i < heartCount; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.textContent = '♡';
-                
-                // Random positioning and timing
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDelay = Math.random() * 5 + 's';
-                heart.style.animationDuration = (3 + Math.random() * 2) + 's';
-                
-                loveRain.appendChild(heart);
+        // love rain - bulletproof
+        function createLoveRain(){
+            const c=document.getElementById('loveRain');
+            if(!c) return;
+            c.innerHTML='';
+            const icons=['\u2661','\u2665','\u2728','\u2764']; // ♡ ♥ ✨ ❤ - ascii-safe
+            for(let i=0;i<22;i++){
+                const h=document.createElement('div');
+                const isSparkle=Math.random()>.7;
+                h.className=isSparkle?'heart sparkle':'heart'+(Math.random()>.6?' tiny':'');
+                h.textContent=icons[Math.floor(Math.random()*icons.length)];
+                h.style.left=Math.random()*100+'%';
+                h.style.top='-40px';
+                const dur=(4+Math.random()*4).toFixed(2)+'s';
+                const delay=(Math.random()*5).toFixed(2)+'s';
+                h.style.animation='fall '+dur+' linear '+delay+' infinite';
+                if(isSparkle) h.style.fontSize=(12+Math.random()*10)+'px';
+                c.appendChild(h);
             }
         }
-
-        // Initialize love rain when page loads
-        document.addEventListener('DOMContentLoaded', createLoveRain);
-
-        // Add click effects to social buttons
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Create a temporary sparkle effect
-                const sparkle = document.createElement('div');
-                sparkle.textContent = '✨';
-                sparkle.style.position = 'absolute';
-                sparkle.style.left = e.clientX + 'px';
-                sparkle.style.top = e.clientY + 'px';
-                sparkle.style.fontSize = '20px';
-                sparkle.style.pointerEvents = 'none';
-                sparkle.style.zIndex = '1000';
-                sparkle.style.animation = 'bounce 0.6s ease-out';
-                
-                document.body.appendChild(sparkle);
-                
-                setTimeout(() => {
-                    document.body.removeChild(sparkle);
-                }, 600);
+        // typewriter
+        function typeWriter(el,text,speed,cb){
+            let i=0; el.textContent='';
+            function tick(){ if(i<text.length){el.textContent+=text.charAt(i++); setTimeout(tick,speed);} else if(cb) cb(); }
+            tick();
+        }
+        // cursor trail
+        let lastTrail=0;
+        document.addEventListener('mousemove',e=>{
+            const now=Date.now(); if(now-lastTrail<55) return; lastTrail=now;
+            if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            if(Math.random()>.55) return;
+            const t=document.createElement('div'); t.className='trail'; t.textContent=['♡','♥','✨'][Math.floor(Math.random()*3)];
+            t.style.left=e.clientX+'px'; t.style.top=e.clientY+'px'; t.style.fontSize=(12+Math.random()*10)+'px';
+            document.body.appendChild(t); setTimeout(()=>t.remove(),900);
+        });
+        // confetti on click
+        function burst(x,y){
+            const emojis=['✨','💖','🌸','💫','🎀','💕'];
+            for(let i=0;i<8;i++){
+                const s=document.createElement('div'); s.className='confetti'; s.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+                s.style.left=x+'px'; s.style.top=y+'px';
+                const ang=(Math.PI*2*i)/8 + (Math.random()*.5);
+                const dist=70+Math.random()*70;
+                s.style.setProperty('--tx', (Math.cos(ang)*dist)+'px');
+                s.style.setProperty('--ty', (Math.sin(ang)*dist)+'px');
+                document.body.appendChild(s); setTimeout(()=>s.remove(),800);
+            }
+        }
+        // run immediately + on DOM ready
+        if(document.readyState!=='loading') createLoveRain();
+        document.addEventListener('DOMContentLoaded',()=>{
+            createLoveRain();
+            // safety re-check after 1s
+            setTimeout(()=>{ if(!document.querySelector('.heart')) createLoveRain(); },1000);
+            const title=document.getElementById('typeText');
+            const sub=document.getElementById('typeSub');
+            const subs=['kawaii lover ♡','pastel dreamer ✨','build cute things 🌈'];
+            typeWriter(title,"Hi 👋, I'm RAF",85,()=>{
+                let idx=0; function nextSub(){
+                    typeWriter(sub,subs[idx],55,()=>{ setTimeout(()=>{ sub.textContent=''; idx=(idx+1)%subs.length; nextSub(); },1400); });
+                } nextSub();
             });
+        });
+        document.querySelectorAll('.social-btn').forEach(btn=>{
+            btn.addEventListener('click',e=>{
+                const rect=btn.getBoundingClientRect();
+                const x= e.clientX || (rect.left+rect.width/2);
+                const y= e.clientY || (rect.top+rect.height/2);
+                burst(x,y);
+                btn.animate([{transform:'scale(1)'},{transform:'scale(.92)'},{transform:'scale(1.04)'},{transform:'scale(1)'}],{duration:320,easing:'ease-out'});
+            });
+            btn.addEventListener('mouseenter',()=>{ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) btn.style.animation='wobble .5s ease'; });
+            btn.addEventListener('animationend',()=>{ btn.style.animation=''; });
+        });
+        // click anywhere burst tiny
+        document.addEventListener('click',e=>{
+            if(e.target.closest('.social-btn')) return;
+            if(Math.random()>.7) burst(e.clientX,e.clientY);
         });
     </script>
 </body>
